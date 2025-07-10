@@ -1,0 +1,58 @@
+2025-07-10 08:53:37,567 ERROR: Exception on /index [GET] [in C:\Users\Student\project\venv\Lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Student\project\app\routes.py", line 62, in index
+    return render_template('index.html', title='Home', form=form,
+                           posts=posts.items, next_url=next_url,
+                           prev_url=prev_url)
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\Student\project\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Student\project\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Student\project\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Student\project\app\templates\base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Student\project\app\templates\index.html", line 19, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Student\project\app\templates\_post.html", line 11, in top-level template code
+    href="{{ url_for('user', username=post.author.username) }}">
+    ^^^^^
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Student\project\venv\Lib\site-packages\flask\app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "C:\Users\Student\project\venv\Lib\site-packages\werkzeug\routing\map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'main.user' with values ['username']. Did you mean 'user' instead?
+2025-07-10 09:03:05,903 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
+2025-07-10 09:03:16,867 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
+2025-07-10 09:06:04,165 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
+2025-07-10 09:09:01,816 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
+2025-07-10 09:09:45,142 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
+2025-07-10 09:09:55,632 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
+2025-07-10 09:13:04,863 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
+2025-07-10 09:42:23,739 INFO: Microblog startup [in C:\Users\Student\project\app\__init__.py:46]
