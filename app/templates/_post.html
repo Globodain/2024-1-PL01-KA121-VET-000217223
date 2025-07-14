@@ -1,17 +1,9 @@
-   <table>
+    <table>
         <tr valign="top">
             <td><img src="{{ post.author.avatar(36) }}"></td>
             <td>
-                <a href="{{ url_for('user', username=post.author.username) }}">
-                    {{ post.author.username }}
-                </a>
-                says:<br>{{ post.body }}
-                {% set user_link %}
-                    <a class="user_popup"
-                    href="{{ url_for('user', username=post.author.username) }}">
-                {{ post.author.username }}
-            </a>
-        {% endset %}
+                <a href="{{ url_for('user', username=post.author.username) }}">{{ post.author.username }}</a> says:<br>
+                {{ post.body }}
             </td>
         </tr>
     </table>

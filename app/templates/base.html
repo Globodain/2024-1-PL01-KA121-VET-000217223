@@ -1,25 +1,26 @@
+<!doctype html>
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} - microblog</title>
+        <title>{{ title }} - Microblog</title>
         {% else %}
-        <title>microblog</title>
+        <title>Welcome to Microblog</title>
         {% endif %}
     </head>
     <body>
-       <div>
-            Microblog:
+        <div>
+            Microblog: 
             <a href="{{ url_for('index') }}">Home</a>
-            {% if current_user.is_anonymous %}
+            {% if current_user.is_annonymous %}
             <a href="{{ url_for('login') }}">Login</a>
             {% else %}
+            <a href="{{ url_for('explore') }}">Explore</a>
             <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
             <a href="{{ url_for('logout') }}">Logout</a>
-            <a href="{{ url_for('explore') }}">Explore</a>
             {% endif %}
         </div>
         <hr>
-        {% with messages = get_flashed_messages() %}
+        {% with message = get_flashed_messages() %}
         {% if messages %}
         <ul>
             {% for message in messages %}
@@ -28,24 +29,6 @@
         </ul>
         {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
-       <script src="{{ url_for('static', filename='js/microblog.js') }}"></script>
-<script>
-  $(function () {
-    $('[data-toggle="popover"]').popover();
-
-    // polling co 10s
-    setInterval(function(){
-      $.getJSON($SCRIPT_ROOT + '/notifications', function(data){
-        var badge = $('#notif-badge');
-        if (data.unread_count > 0) {
-          badge.text(data.unread_count).show();
-        } else {
-          badge.hide();
-        }
-      });
-    }, 10000);
-  });
-</script>
+        {% block content %} {% endblock %}
     </body>
 </html>
